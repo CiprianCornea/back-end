@@ -1,4 +1,4 @@
-package com.example.students_manager.exception;
+package com.example.students.manager.exception;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(String message) {

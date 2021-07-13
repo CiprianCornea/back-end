@@ -1,15 +1,31 @@
-package com.example.students_manager.dto;
+package com.example.students.manager.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
-public class StudentDto {
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String name;
     private String email;
     private String specialization;
     private String phone;
     private String imageUrl;
+    private String studentCode;
 
     public Long getId() {
         return id;
@@ -57,5 +73,13 @@ public class StudentDto {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getStudentCode() {
+        return studentCode;
+    }
+
+    public void setStudentCode(String studentCode) {
+        this.studentCode = studentCode;
     }
 }
