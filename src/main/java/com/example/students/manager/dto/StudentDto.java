@@ -4,12 +4,27 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class StudentDto {
     private Long id;
+
+    @NotNull(message = "name shouldn't be empty")
     private String name;
+
+    @Email(message = "email must be a valid email")
     private String email;
+
+    @NotNull(message = "specialization shouldn't be empty")
     private String specialization;
+
+    @NotNull(message = "phone number shouldn't be empty")
+    @Size(message = "phone number should have minimum 10 characters", min = 10)
     private String phone;
+
+    @NotNull(message = "imageUrl shouldn't be empty")
     private String imageUrl;
 
     @Override

@@ -2,7 +2,6 @@ package com.example.students.manager.service;
 
 import com.example.students.manager.converter.StudentConverter;
 import com.example.students.manager.dto.StudentDto;
-import com.example.students.manager.exception.UserNotFoundException;
 import com.example.students.manager.repo.StudentRepo;
 import com.example.students.manager.domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;

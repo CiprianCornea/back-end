@@ -1,31 +1,36 @@
 package com.example.students.manager.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-public class Student {
+public class Student implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
     private Long id;
-
     private String name;
     private String email;
     private String specialization;
     private String phone;
     private String imageUrl;
+    @Column(nullable = false, updatable = false)
     private String studentCode;
+
+    public Student() {
+    }
+
+    public Student(String name, String email, String specialization, String phone, String imageUrl, String studentCode) {
+        this.name = name;
+        this.email = email;
+        this.specialization = specialization;
+        this.phone = phone;
+        this.imageUrl = imageUrl;
+        this.studentCode = studentCode;
+    }
 
     public Long getId() {
         return id;
@@ -81,5 +86,17 @@ public class Student {
 
     public void setStudentCode(String studentCode) {
         this.studentCode = studentCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", specialization='" + specialization + '\'' +
+                ", phone='" + phone + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
     }
 }
