@@ -50,4 +50,9 @@ public class StudentService {
         studentRepo.deleteStudentById(id);
     }
 
+    // GET BY ID
+    public StudentDto getStudentById(Long id) {
+        Student student = studentRepo.getById(id);
+        return this.studentConverter.entityToDto(student);
+    }
 }

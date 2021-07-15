@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students") // students
 public class StudentController {
     private final StudentService studentService;
 
@@ -17,23 +17,29 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/all")
+    @GetMapping() // fara path
     public List<StudentDto> getAllStudents() {
         return studentService.findAllStudents();
     }
 
-    @PostMapping("/add")
+    @PostMapping() // fara path
     public StudentDto addStudent(@Valid @RequestBody StudentDto studentDto) {
         return studentService.addStudent(studentDto);
     }
 
-    @PutMapping("/update")
-    public StudentDto updateStudent(@Valid @RequestBody StudentDto student) {
-        return studentService.updateStudent(student);
+    @PutMapping("/{id}") // id param
+    public StudentDto updateStudent(@PathVariable("id") Long id,
+                                    @Valid @RequestBody StudentDto studentDto) {
+        return studentService.updateStudent(studentDto);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}") // fara delete
     public void deleteStudent(@PathVariable("id") Long id) {
         studentService.deleteStudent(id);
+    }
+
+    @GetMapping("/{id}")
+    public StudentDto getStudentById(@PathVariable("id") Long id) {
+        return studentService.getStudentById(id);
     }
 }
