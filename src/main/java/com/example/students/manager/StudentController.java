@@ -13,7 +13,7 @@ import java.util.List;
 public class StudentController {
     private final StudentService studentService;
 
-    public StudentController(StudentService studentService, StudentConverter studentConverter) {
+    public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -28,8 +28,7 @@ public class StudentController {
     }
 
     @PutMapping("/{id}") // id param
-    public StudentDto updateStudent(@PathVariable("id") Long id,
-                                    @Valid @RequestBody StudentDto studentDto) {
+    public StudentDto updateStudent(@Valid @RequestBody StudentDto studentDto) {
         return studentService.updateStudent(studentDto);
     }
 
